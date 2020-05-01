@@ -1,0 +1,50 @@
+# Server
+server:
+  port: 8080
+  servlet:
+    context-path: /mobile-service
+    
+#DB 
+spring:
+  data:
+    mongodb:
+      authentication-database: test_db
+      username: test
+      password: test
+      database: test_db
+      port: 27017
+      host: 13.235.196.163
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: testusername
+    password: testpassword
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            
+email:
+  from: doctormobiles007@gmail.com
+  
+      
+#AWS
+s3:
+  default:
+    folder: file-uploads
+  bucket: 
+    name: demotestrahamat
+  access:
+    name: AKIAJLK4V5HIHSYY4XUA
+    secret: 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
+      
+   
+   
+#File upload response
+file:
+  upload:
+    base-url: https://demotestrahamat.s3.ap-south-1.amazonaws.com
+    
+ 
