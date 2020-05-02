@@ -12,6 +12,11 @@ pipeline {
 	        bat label: '', script: 'mvn -Dmaven.test.skip=true install'
         }
         }
+		stage('Docker info') {
+        steps{
+	        bat label: '', script: 'dockker info'
+        }
+        }
     
     }
         
