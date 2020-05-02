@@ -14,7 +14,7 @@ pipeline {
         }
 		stage('Docker info') {
         steps{
-	        bat label: '', script: 'dockker info'
+	        bat label: '', script: 'docker info'
         }
         }
     
