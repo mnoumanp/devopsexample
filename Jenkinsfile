@@ -1,1 +1,1 @@
-mvn clean package
+bat label: '', script: 'mvn clean package'
