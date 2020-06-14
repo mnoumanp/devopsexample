@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Maven Build') {
         steps{
-	        bat label: '', script: 'mvn -Dmaven.test.skip=true install'
+	        sh label: '', script: 'mvn -Dmaven.test.skip=true install'
         }
         }
 		stage('Docker info') {
         steps{
-	        bat label: '', script: 'docker info'
+	        sh label: '', script: 'docker info'
         }
         }
     
