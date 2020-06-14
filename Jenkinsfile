@@ -12,11 +12,33 @@ pipeline {
 	        sh label: '', script: 'mvn -Dmaven.test.skip=true install'
         }
         }
-		stage('Docker info') {
-        steps{
-	        sh label: '', script: 'docker info'
+		stage('Docker login') {
+        steps {
+				//withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin'])
+				sh 'docker login -u 9741223883 -p 9342994028'
+			}
         }
-        }
+	stage ("Docker-Build-Services") {
+			steps {
+				//withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin'])
+				sh "docker build -t microserviceapi ."
+				
+			}
+		} 
+	    stage ("Tagging-docker-images") {
+			steps {
+				//withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin'])
+				sh "docker tag microserviceapi 9741223883/microserviceapi"
+				
+			}
+		}
+	    stage ("Pushing-Images-to-Registry"){
+			steps {
+				//withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin'])
+				sh "docker push 9741223883/microserviceapi"
+				
+			}
+		}
     
     }
         
