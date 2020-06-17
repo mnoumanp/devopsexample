@@ -1,36 +1,14 @@
-apiVersion: apps/v1 
-kind: Deployment
-metadata:
-  name: deployment-minikube
-spec:
-  selector:
-    matchLabels:
-      app: minikubeapp
-  
-  template:
-    metadata:
-      labels:
-        app: minikubeapp
-    spec:
-      containers:
-      - name: minikubeapp-ctr
-        image: kishorsg/my-app:2.0.0
-        ports:
-        - containerPort: 8080
-
----
 apiVersion: v1
-kind: Service
+kind: Pod   
 metadata:
-  name: minikubeapp-svc
-  labels:
-    app: minikubeapp
+	name: nginx-pod
+	namespace: web
+	labels:
+    app: nginx-app
 spec:
-  type: NodePort
-  ports:
-    - port: 8075
-      targetPort: 8080
-      protocol: TCP   
-      
-  selector:
-    app: minikubeapp
+	containers:
+  - name: nginx-ctr
+    image: nginx
+	  command: ['nginx','-g','daemon off;','-q']
+      ports:
+	    - containerPort: 8081	
