@@ -41,10 +41,10 @@ pipeline {
 		}
 	    stage('DeployToProduction') {
             		steps {
-                		kubernetesDeploy(
-                    			kubeconfigId: 'confignew',
-                    			configs: 'deploy.yaml'
-                		)
+                			withKubeConfig(credentialsId: 'confignew') {
+    
+                sh 'kubectl apply -f  deploy.yaml'
+}
             		}
         	}
     
