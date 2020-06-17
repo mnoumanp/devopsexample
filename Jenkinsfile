@@ -42,7 +42,7 @@ pipeline {
 	    stage('DeployToProduction') {
             		steps {
                 		kubernetesDeploy(
-                    			kubeconfigId: 'kubeconfig',
+                    			kubeconfigId: 'confignew',
                     			configs: 'deploy.yaml'
                 		)
             		}
